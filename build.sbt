@@ -10,8 +10,6 @@ libraryDependencies ++= Seq(
   specs2 % Test
 )
 
-//javaOptions += "-Dconfig.resource=application.conf"
-
 // Play 2.4 recommends using injection route generation.
 // See -> https://www.playframework.com/documentation/2.4.x/Migration24#Dependency-Injection
 //
