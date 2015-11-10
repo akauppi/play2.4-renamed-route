@@ -12,11 +12,16 @@ Sample for trying to make a modular Play 2.4 system.
 
 ## The Problem
 
-If instead of `conf/routes` we're using some other file name (defined in `conf/hello-application.conf`), `sbt test` gives this:
+If routing is done normally, everything works. `sbt test` succeeds.
+
+If:
+
+- routing is renamed to `conf/hello.routes`
+- `play.http.router=hello.routes` is added to `application.conf`
+
+..the system no longer compiles. `sbt test` says:
 
 ```
-[info] Hello should
-[error]   ! give {hello: true}
 [error]    Unable to provision, see the following errors:
 [error]    
 [error]    1) Error in custom provider, java.lang.ClassCastException: interface play.api.routing.Router is not assignable from class hello.routes
@@ -25,7 +30,8 @@ If instead of `conf/routes` we're using some other file name (defined in `conf/h
 [error]    
 [error]    1 error (InjectorImpl.java:1025)
 ```
-It may be a Play 2.4 bug, or something needs to be done differently within Play 2.4. Posted this project to find a solution to this.
+
+This may be a Play 2.4 bug, or something needs to be done differently within Play 2.4. Posted this project to find a solution to this.
 
 
 ## References
