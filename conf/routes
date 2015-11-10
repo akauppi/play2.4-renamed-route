@@ -1,0 +1,4 @@
+#
+# conf/hello.routes
+#
+GET     /hello          hello.API.aaa
