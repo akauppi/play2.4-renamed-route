@@ -1,4 +1,4 @@
 #
 # conf/hello.routes
 #
-GET     /hello          hello.API.aaa
+GET     /hello          controllers.hello.API.aaa
