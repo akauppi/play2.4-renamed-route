@@ -7,9 +7,9 @@ import org.scalatestplus.play._
 
 /*
  */
-class HelloSpec extends PlaySpec {
+class HelloSpec extends PlaySpec with OneAppPerSuite {
 
-  "Hello" must {
+  "Hello API" must {
 
     "give {hello: true}" in {
       val Some(res) = route( FakeRequest(GET, "/hello") )
