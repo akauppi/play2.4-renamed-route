@@ -1,26 +1,24 @@
-import org.specs2.mutable._
-import org.specs2.runner._
-import org.junit.runner._
 import play.api.libs.json.{Json}
 
 import play.api.test._
 import play.api.test.Helpers._
 
+import org.scalatestplus.play._
+
 /*
  */
-@RunWith( classOf[JUnitRunner] )
-class HelloSpec extends Specification {
+class HelloSpec extends PlaySpec {
 
-  "Hello" should {
+  "Hello" must {
 
-    "give {hello: true}" in new WithApplication {
+    "give {hello: true}" in {
       val Some(res) = route( FakeRequest(GET, "/hello") )
 
-      status(res) must equalTo(OK)
-      contentType(res) mustEqual Some("application/json")
+      status(res) mustBe OK
+      contentType(res) mustBe Some("application/json")
 
       val jsv = Json.parse( contentAsString(res) )
-      (jsv \ "hello").as[Boolean] must equalTo(true)
+      (jsv \ "hello").as[Boolean] mustBe true
     }
   }
 }
